@@ -1,19 +1,33 @@
 import css from "./MainStyles.module.css"
+import toast, { Toaster } from "react-hot-toast";
+import { BsSearch } from "react-icons/bs";
+
+
+const notify = () => toast('Please enter search term!');
 
 export const Finder = ({ onSubmit }) => {
-  const handleSubmit = e => {
-    e.preventDefault();
-    const value = e.target.elements.query.value.trim().toLowerCase();
 
-    onSubmit(value);
-    e.target.reset();
+    const handleSubmit = (evt) => {
+    evt.preventDefault();
+    const form = evt.target;
+    const query = form.elements.query.value;
+    
+    if(form.elements.query.value.trim() === "") {
+      notify();
+      return;
+  }
+    onSubmit(query);
+    form.reset();
+
+
+    
   };
 
   return (
-    <header className={css.header}>
-      <form onSubmit={handleSubmit}>
-        <button type="submit">Search</button>
-        <input
+    <header>
+      <form className={css.form} onSubmit={handleSubmit}>
+        <button className={css.btn} type="submit"><BsSearch /></button>
+        <input className={css.field}
           type="text"
           name="query"
           autoComplete="off"
@@ -22,6 +36,7 @@ export const Finder = ({ onSubmit }) => {
         />
         
       </form>
+      <Toaster />
     </header>
   );
 };

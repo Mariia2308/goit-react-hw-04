@@ -27,9 +27,9 @@ export const usePhotoSearch = () => {
 
     const fetchData = async () => {
       try {
-        const resp = await getPhotos(query, page);
-        setTotalResults(resp.totalPhotos);
-        setPhotos(oldPhotos => [...oldPhotos, ...resp.photos]);
+        const response = await getPhotos(query, page);
+        setTotalResults(response.totalPhotos);
+        setPhotos(oldPhotos => [...oldPhotos, ...response.photos]);
       } catch (err) {
         console.error(err.message);
         setError(true);
@@ -37,6 +37,8 @@ export const usePhotoSearch = () => {
         setLoading(false);
       }
     };
+
+    
 
     fetchData();
   }, [query, page]);
