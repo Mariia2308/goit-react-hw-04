@@ -55,8 +55,6 @@ header {
 
 li {
     cursor: pointer;
-    width: 343px;
-    height: 220px;
     overflow: hidden;
     border: 1px solid black;
     transition-duration: 250ms;
