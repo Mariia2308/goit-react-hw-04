@@ -1,8 +1,7 @@
-
 import { ColorRing } from 'react-loader-spinner';
 
-function Loader() {
-  return (
+const Loader = ({ loading }) => {
+  return loading ? (
     <div>
       <div>
         <ColorRing
@@ -16,7 +15,7 @@ function Loader() {
         />
       </div>
     </div>
-  );
-}
+  ) : null;
+};
 
 export default Loader;

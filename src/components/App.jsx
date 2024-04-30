@@ -36,16 +36,22 @@ export const App = () => {
   useEffect(() => {
     if (!query) return;
     setLoading(true);
-    getPhotos(query, page)
-      .then(resp => {
-        setTotalResults(resp.totalPhotos);
-        setPhotos(oldPhotos => [...oldPhotos, ...resp.photos]);
-      })
-      .catch(err => {
-        console.log(err.message);
+    const fetchData = async () => {
+      try {
+        const response = await getPhotos(query, page);
+        setTotalResults(response.totalPhotos);
+        setPhotos(oldPhotos => [...oldPhotos, ...response.photos]);
+      } catch (err) {
+        console.error(err.message);
         setError(true);
-      })
-      .finally(() => setLoading(false));
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    
+
+    fetchData();
   }, [query, page]);
 
   const onClick = () => {
@@ -71,7 +77,7 @@ export const App = () => {
       {photos.length < totalResults && (
         <LoadMoreBtn onClick={onClick} buttonText = 'Load more'/>
       )}
-      {loading && <Loader />}
+      {<Loader loading = {loading} />}
       {error && <Error message="Ooops, smth went wrong" />}
       <ImageModal onClose={handleModalClose} isOpen={isModalOpen} url={modalUrl} alt={modalAlt} />
     </div>

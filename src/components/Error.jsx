@@ -1,11 +1,7 @@
 
 
-function Error({ message = 'OOOOOOOPPPPPPSSSS' }) {
-  return (
-    <p>
-      {message}
-    </p>
-  );
-}
+const Error = ({ message }) => {
+  return <div>Error: {message}</div>;
+};
 
 export default Error;
