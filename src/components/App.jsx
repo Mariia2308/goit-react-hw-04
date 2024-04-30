@@ -49,8 +49,6 @@ export const App = () => {
       }
     };
 
-    
-
     fetchData();
   }, [query, page]);
 
@@ -63,7 +61,6 @@ export const App = () => {
         setIsModalOpen(true)
     }
 
-    // set state for closed modal
     const handleModalClose = () => {
         setIsModalOpen(false)
     }
