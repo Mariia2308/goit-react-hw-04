@@ -1,13 +1,13 @@
 import css from "./MainStyles.module.css"
-import  ImageCard from './ImageCard'
+import ImageCard from './ImageCard'
 
-export const ImageGallery = ({ photos }) => {
+export const ImageGallery = ({ photos, onClick}) => {
   return (
     <ul className={css.gallery}>
-      {photos.map(photo => {
+      {photos && photos.map(photo => {
         return (
           <li key={photo.id}>
-            <ImageCard photo={photo} />
+          <ImageCard photo={photo} onClick={(imgUrl, imgAlt) => onClick(imgUrl, imgAlt)} />
           </li>
         );
       })}

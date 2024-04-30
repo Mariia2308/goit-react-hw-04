@@ -5,7 +5,7 @@ import { BsSearch } from "react-icons/bs";
 
 const notify = () => toast('Please enter search term!');
 
-export const Finder = ({ onSubmit }) => {
+export const SearchBar = ({ onSubmit }) => {
 
     const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -40,4 +40,4 @@ export const Finder = ({ onSubmit }) => {
     </header>
   );
 };
-export default Finder
+export default SearchBar

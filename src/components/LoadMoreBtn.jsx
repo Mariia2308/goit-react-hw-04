@@ -1,9 +1,9 @@
 import css from "./MainStyles.module.css"
-function LoadMoreBtn({ WhatBtnDo, onClick }) {
+function LoadMoreBtn({ buttonText, onClick }) {
   return (
     <div>
           <button onClick={onClick} className={css.btnLoad}>
-              {WhatBtnDo}</button>  
+              {buttonText}</button>  
     </div>
   )
 }
